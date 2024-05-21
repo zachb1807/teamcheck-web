@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { Container, Button, Box, Text, Heading, Center, Divider, Image, SimpleGrid, Grid, GridItem } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter, Stack, StackDivider } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
@@ -12,7 +13,9 @@ export default function Home() {
       <Flex className={`${inter.className} p-4`} >
         <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
         <Spacer />
-        <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
+        <Link href='/get-started'>
+          <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
+        </Link>
       </Flex>
       <Divider />
       <Container centerContent maxW='container.md' className="mt-16">
@@ -24,7 +27,9 @@ export default function Home() {
         <Box height={`51`}></Box>
         <Text className={`${inter.className}`} align="center" fontSize='xl'>TeamCheck is a web application that provides a more efficient way for TeamSnap coaches to manage their players&apos; attendance.</Text>
         <Box height={`51`}></Box>
-        <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
+        <Link href='/get-started'>
+          <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
+        </Link>
         <Box height={`41`}></Box>
       </Container>
       <Divider />
@@ -131,7 +136,9 @@ export default function Home() {
           <Box height={`31`}></Box>
           <Text className={`${inter.className}`} align="center" fontSize='lg'>Setup is as simple as connecting your TeamSnap account</Text>
           <Box height={`41`}></Box>
-          <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
+          <Link href='/get-started'>
+            <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
+          </Link>
         </Container>
       </Container>
 
