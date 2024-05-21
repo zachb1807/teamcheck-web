@@ -12,10 +12,14 @@ const disable_font_center = defineStyle({
     fontFamily: "",
     textAlign: "center",
 })
+const disable_font = defineStyle({
+    fontFamily: "",
+})
 
 export const headingTheme = defineStyleConfig({
     variants: {
         brand: brandPrimary,
-        "disable_font_center": disable_font_center
+        "disable_font_center": disable_font_center,
+        "disable_font": disable_font
     },
 })
