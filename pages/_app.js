@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
-import { headingTheme } from './theme/components/Heading'
+import { headingTheme } from '../components/Heading'
 import "../styles/globals.css";
 
 const theme = extendTheme({
