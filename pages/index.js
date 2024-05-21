@@ -28,7 +28,7 @@ export default function Home() {
         <Box height={`41`}></Box>
         <Divider />
         <Box height={`41`}></Box>
-        <Heading className={`${inter.className}`} variant="disable_font_center"size='2xl'>Features</Heading>
+        <Heading className={`${inter.className}`} variant="disable_font_center" size='2xl'>Features</Heading>
         <Box height={`30`}></Box>
       </Container>
       <Container maxW="container.xl">
@@ -121,11 +121,11 @@ export default function Home() {
         <Box height={`51`}></Box>
         <Divider />
         <Container centerContent maxW='container.md' className="mt-14">
-        <Heading className={`${inter.className}`} variant="disable_font_center" size='xl'>Ready to give <Text as="span" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Text> a try?</Heading>
-        <Box height={`31`}></Box>
-        <Text className={`${inter.className}`} align="center" fontSize='lg'>Setup is as simple as connecting your TeamSnap account</Text>
-        <Box height={`41`}></Box>
-        <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
+          <Heading className={`${inter.className}`} variant="disable_font_center" size='xl'>Ready to give <Text as="span" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Text> a try?</Heading>
+          <Box height={`31`}></Box>
+          <Text className={`${inter.className}`} align="center" fontSize='lg'>Setup is as simple as connecting your TeamSnap account</Text>
+          <Box height={`41`}></Box>
+          <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
         </Container>
       </Container>
       <Box height={`51`}></Box>
