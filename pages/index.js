@@ -13,11 +13,13 @@ export default function Home() {
         <Spacer />
         <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
       </Flex>
-      <Divider/>
+      <Divider />
       <Container centerContent maxW='container.md' className="mt-16">
-        <Heading className={`${inter.className} ml-1`} variant="disable_font_center" size='2xl' color="gray.700">The improved attendance management dashboard for TeamSnap</Heading>
-        
-        <Image src="/phone.png" alt="TeamCheck" className={`mt-14`}/>
+        <Box display="flex">
+          <Heading className={`${inter.className} ml-1`} variant="disable_font_center" size='2xl' color="gray.700">The <Text as="span" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>improved</Text> attendance management dashboard for TeamSnap</Heading>
+        </Box>
+
+        <Image src="/phone.png" alt="TeamCheck" className={`mt-14`} />
       </Container>
     </Box>
   );
