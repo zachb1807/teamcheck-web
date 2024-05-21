@@ -26,99 +26,105 @@ export default function Home() {
         <Box height={`51`}></Box>
         <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
         <Box height={`41`}></Box>
-        <Divider />
-        <Box height={`41`}></Box>
-        <Heading className={`${inter.className}`} variant="disable_font_center" size='2xl'>Features</Heading>
-        <Box height={`30`}></Box>
       </Container>
+      <Divider />
+      <Box bgGradient='linear(to-l, teal.500, teal.500)'>
+        <Box height={`41`}></Box>
+        <Heading className={`${inter.className}`} variant="disable_font_center" size='2xl' color={`white`}>Features</Heading>
+        <Box height={`41`}></Box>
+
+        <Container maxW="container.xl">
+          <SimpleGrid columns={[1, null, 3]} spacing='40px' >
+            <Card>
+              <CardBody>
+                <Stack spacing={4}>
+                  <Image
+                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    alt='Green double couch with wooden legs'
+                    borderRadius='lg'
+                  />
+                  <Box></Box>
+                  <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Edit Attendance</Heading>
+                  <Text className={`${inter.className}`} align="center">Easily mark your players&apos; attendance for an event, update as needed, and refresh in real-time.</Text>
+                </Stack>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardBody>
+                <Stack spacing={4}>
+                  <Image
+                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    alt='Green double couch with wooden legs'
+                    borderRadius='lg'
+                  />
+                  <Box></Box>
+                  <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">View History</Heading>
+                  <Text className={`${inter.className}`} align="center">View attendance history for each event to track player attendance performance.</Text>
+                </Stack>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardBody>
+                <Stack spacing={4}>
+                  <Image
+                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    alt='Green double couch with wooden legs'
+                    borderRadius='lg'
+                  />
+                  <Box></Box>
+                  <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Sort Players</Heading>
+                  <Text className={`${inter.className}`} align="center">Sort players by both last and first name for easy team management</Text>
+                </Stack>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardBody>
+                <Stack spacing={4}>
+                  <Image
+                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    alt='Green double couch with wooden legs'
+                    borderRadius='lg'
+                  />
+                  <Box></Box>
+                  <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Filters</Heading>
+                  <Text className={`${inter.className}`} align="center">Apply filters to quickly find players based on specific criteria.</Text>
+                </Stack>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardBody>
+                <Stack spacing={4}>
+                  <Image
+                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    alt='Green double couch with wooden legs'
+                    borderRadius='lg'
+                  />
+                  <Box></Box>
+                  <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Search Events</Heading>
+                  <Text className={`${inter.className}`} align="center">Search for specific events to quickly input attendance.</Text>
+                </Stack>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardBody>
+                <Stack spacing={4}>
+                  <Image
+                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    alt='Green double couch with wooden legs'
+                    borderRadius='lg'
+                  />
+                  <Box></Box>
+                  <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Web-Based Dashboard</Heading>
+                  <Text className={`${inter.className}`} align="center">Access and manage your team&apos;s attendance from any device with our web-based dashboard. No app required.</Text>
+                </Stack>
+              </CardBody>
+            </Card>
+          </SimpleGrid>
+          <Box height={`51`}></Box>
+        </Container>
+      </Box>
+
       <Container maxW="container.xl">
-        <SimpleGrid columns={[1, null, 3]} spacing='40px'>
-          <Card>
-            <CardBody>
-              <Stack spacing={4}>
-                <Image
-                  src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                  alt='Green double couch with wooden legs'
-                  borderRadius='lg'
-                />
-                <Box></Box>
-                <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Edit Attendance</Heading>
-                <Text className={`${inter.className}`} align="center">Easily mark your players&apos; attendance for an event, update as needed, and refresh in real-time.</Text>
-              </Stack>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <Stack spacing={4}>
-                <Image
-                  src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                  alt='Green double couch with wooden legs'
-                  borderRadius='lg'
-                />
-                <Box></Box>
-                <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">View History</Heading>
-                <Text className={`${inter.className}`} align="center">View attendance history for each event to track player attendance performance.</Text>
-              </Stack>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <Stack spacing={4}>
-                <Image
-                  src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                  alt='Green double couch with wooden legs'
-                  borderRadius='lg'
-                />
-                <Box></Box>
-                <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Sort Players</Heading>
-                <Text className={`${inter.className}`} align="center">Sort players by both last and first name for easy team management</Text>
-              </Stack>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <Stack spacing={4}>
-                <Image
-                  src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                  alt='Green double couch with wooden legs'
-                  borderRadius='lg'
-                />
-                <Box></Box>
-                <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Filters</Heading>
-                <Text className={`${inter.className}`} align="center">Apply filters to quickly find players based on specific criteria.</Text>
-              </Stack>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <Stack spacing={4}>
-                <Image
-                  src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                  alt='Green double couch with wooden legs'
-                  borderRadius='lg'
-                />
-                <Box></Box>
-                <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Search Events</Heading>
-                <Text className={`${inter.className}`} align="center">Search for specific events to quickly input attendance.</Text>
-              </Stack>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <Stack spacing={4}>
-                <Image
-                  src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                  alt='Green double couch with wooden legs'
-                  borderRadius='lg'
-                />
-                <Box></Box>
-                <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Web-Based Dashboard</Heading>
-                <Text className={`${inter.className}`} align="center">Access and manage your team&apos;s attendance from any device with our web-based dashboard. No app required.</Text>
-              </Stack>
-            </CardBody>
-          </Card>
-        </SimpleGrid>
-        <Box height={`51`}></Box>
         <Divider />
         <Container centerContent maxW='container.md' className="mt-14">
           <Heading className={`${inter.className}`} variant="disable_font_center" size='xl'>Ready to give <Text as="span" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Text> a try?</Heading>
@@ -128,6 +134,7 @@ export default function Home() {
           <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
         </Container>
       </Container>
+
       <Box height={`51`}></Box>
     </Box>
   );
