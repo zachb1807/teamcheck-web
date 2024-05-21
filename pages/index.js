@@ -22,7 +22,7 @@ export default function Home() {
         <Box height={`51`}></Box>
         <Image src="/phone.png" alt="TeamCheck" />
         <Box height={`51`}></Box>
-        <Text className={`${inter.className}`} align="center" fontSize='xl'>TeamCheck is a web application that provides a more efficient way for TeamSnap coaches to manage their players' attendance.</Text>
+        <Text className={`${inter.className}`} align="center" fontSize='xl'>TeamCheck is a web application that provides a more efficient way for TeamSnap coaches to manage their players&apos; attendance.</Text>
         <Box height={`51`}></Box>
         <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
         <Box height={`41`}></Box>
@@ -43,7 +43,7 @@ export default function Home() {
                 />
                 <Box></Box>
                 <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Edit Attendance</Heading>
-                <Text className={`${inter.className}`} align="center">Easily mark your players' attendance for an event, update as needed, and refresh in real-time.</Text>
+                <Text className={`${inter.className}`} align="center">Easily mark your players&apos; attendance for an event, update as needed, and refresh in real-time.</Text>
               </Stack>
             </CardBody>
           </Card>
@@ -113,7 +113,7 @@ export default function Home() {
                 />
                 <Box></Box>
                 <Heading className={`${inter.className}`} align="center" fontSize='25px' variant="disable_font">Web-Based Dashboard</Heading>
-                <Text className={`${inter.className}`} align="center">Access and manage your team's attendance from any device with our web-based dashboard. No app required.</Text>
+                <Text className={`${inter.className}`} align="center">Access and manage your team&apos;s attendance from any device with our web-based dashboard. No app required.</Text>
               </Stack>
             </CardBody>
           </Card>
