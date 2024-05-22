@@ -12,7 +12,8 @@ export default function Page() {
             <Divider />
             <AbsoluteCenter>
                 <Container centerContent maxW='container.md' className="mt-16">
-                    <Image src="/teamsnap.svg" alt="TeamSnap logo" boxSize='sm' objectFit='fit'></Image>
+                    <Image src="/teamsnap.svg" alt="TeamSnap logo" className="h-11"></Image>
+                    <Box height={`51`}></Box>
                     <Heading variant="disable_font_center" color="gray.700">Authorize your TeamSnap account to continue</Heading>
                     <Box height={`51`}></Box>
                     <Text align="center" fontSize='xl' color="gray.700">We&apos;re going to redirect you to TeamSnap for sign in. Please allow all permissions to ensure TeamCheck works properly.</Text>

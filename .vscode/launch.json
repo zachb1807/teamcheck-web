@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "command": "netlify dev",
+            "name": "Netlify dev",
+            "request": "launch",
+            "type": "node-terminal"
+        }
+    
+    ]
+}
