@@ -15,7 +15,7 @@ export default function Page() {
                     <Image src="/teamsnap.svg" alt="TeamSnap logo" boxSize='sm' objectFit='fit'></Image>
                     <Heading variant="disable_font_center" color="gray.700">Authorize your TeamSnap account to continue</Heading>
                     <Box height={`51`}></Box>
-                    <Text align="center" fontSize='xl' color="gray.700">We're going to redirect you to TeamSnap for sign in. Please allow all permissions to ensure TeamCheck works properly.</Text>
+                    <Text align="center" fontSize='xl' color="gray.700">We&apos;re going to redirect you to TeamSnap for sign in. Please allow all permissions to ensure TeamCheck works properly.</Text>
                     <Box height={`51`}></Box>
                     <Button colorScheme="teal">Sign In<ExternalLinkIcon className={`ml-2`} /></Button>
                 </Container>
