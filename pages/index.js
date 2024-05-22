@@ -137,7 +137,7 @@ export default function Home() {
           <Text className={`${inter.className}`} align="center" fontSize='lg'>Setup is as simple as connecting your TeamSnap account</Text>
           <Box height={`41`}></Box>
           <Link href='/get-started'>
-            <Button colorScheme="teal">Get Started<ChevronRightIcon className={`ml-2`} /></Button>
+            <Button colorScheme="teal" variant='outline'>Get Started<ChevronRightIcon className={`ml-2`} /></Button>
           </Link>
         </Container>
       </Container>
