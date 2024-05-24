@@ -1,14 +1,8 @@
 'use client'
 
 import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner } from '@chakra-ui/react'
-import { ChevronLeftIcon } from '@chakra-ui/icons'
 import { Inter } from "next/font/google";
-import { usePathname, redirect } from 'next/navigation'
-import { useState } from 'react';
 import * as React from "react";
-import { useSearchParams } from 'next/navigation'
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation'
 
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
@@ -16,9 +10,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export default function Page() {
-    
-
-
     return (
         <Box className={`${inter.className}`}>
             <Flex className={`${inter.className} p-4`} >
