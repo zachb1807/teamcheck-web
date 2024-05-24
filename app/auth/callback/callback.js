@@ -25,7 +25,7 @@ export default function CallbackPage() {
         var code = params.get("code");
 
         if (code != null && code != "") {
-            axios.post('/api/token', { code: code, redirect_uri: process.env.NEXT_REDIRECT_URI})
+            axios.post('/api/token', { code: code, redirect_uri: process.env.redirect_uri})
                 .then((response) => {
                     console.log(response.data.access_token);
                     cookies.set('access_token', response.data.access_token)

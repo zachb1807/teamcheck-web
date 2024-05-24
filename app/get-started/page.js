@@ -11,5 +11,5 @@ export default async function Page() {
   // Fetch data directly in a Server Component
 //   const recentPosts = await getPosts()
   // Forward fetched data to your Client Component
-  return <GetStartedLayout client_id={process.env.client_id} redirect_uri={process.env.NEXT_REDIRECT_URI}/>
+  return <GetStartedLayout client_id={process.env.client_id} redirect_uri={process.env.redirect_uri}/>
 }
