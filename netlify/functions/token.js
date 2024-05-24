@@ -29,7 +29,7 @@ exports.handler = async function (event, context, callback) {
         return;
     }
 
-    if (body.code == "" | body.code == null) {
+    if (body.code == "" || body.code == null || body.redirect_uri == "" || body.redirect_uri == null) {
         callback(null, {
             statusCode: 400,
             body: 'Bad Request'
@@ -40,7 +40,7 @@ exports.handler = async function (event, context, callback) {
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'https://auth.teamsnap.com/oauth/token?client_id=' + client_id + '&client_secret=' +  client_secret + '&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code&code=' + body.code,
+        url: 'https://auth.teamsnap.com/oauth/token?client_id=' + client_id + '&client_secret=' +  client_secret + '&redirect_uri=' + body.redirect_uri + '&grant_type=authorization_code&code=' + body.code,
     };
 
     await axios.request(config)

@@ -29,7 +29,7 @@ export default function CallbackPage() {
         var code = params.get("code");
 
         if (code != null && code != "") {
-            axios.post('/api/token', { code: code })
+            axios.post('/api/token', { code: code, redirect_uri: 'https://teamcheck.netlify.app/auth/callback'})
                 .then((response) => {
                     console.log(response.data.access_token);
                     cookies.set('access_token', response.data.access_token)
