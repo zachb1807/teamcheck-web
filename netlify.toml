@@ -2,6 +2,3 @@
   from = "/api/:endpoint"
   to = "/.netlify/functions/:endpoint"
   status = 200
-
-[context.dev.environment]
-  NEXT_REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
