@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/api/:endpoint"
+  to = "/.netlify/functions/:endpoint"
+  status = 200
