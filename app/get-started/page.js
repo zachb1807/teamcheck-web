@@ -21,7 +21,7 @@ export default function Page() {
                         <Box height={`51`}></Box>
                         <Text align="center" fontSize='xl' color="gray.700">We&apos;re going to redirect you to TeamSnap to connect your account. Please allow all permissions to ensure TeamCheck works properly.</Text>
                         <Box height={`51`}></Box>
-                        <Link href="https://auth.teamsnap.com/oauth/authorize?authorization_test=true&client_id=PnmPH_LyHmJB8-I1CIVk59jodY4vxVLqiEVKuK8MkpY&redirect_uri=https://teamcheck.netlify.app/auth/callback&response_type=code&scope=write%20read">
+                        <Link href={"https://auth.teamsnap.com/oauth/authorize?authorization_test=true&client_id=" + process.env.client_id + "&redirect_uri=" + process.env.NEXT_REDIRECT_URI + "&response_type=code&scope=write%20read"}>
                             <Button colorScheme="teal">Sign In<ExternalLinkIcon className={`ml-2`} /></Button>
                         </Link>
                     </Container>
