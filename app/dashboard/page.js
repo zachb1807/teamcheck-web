@@ -1,6 +1,7 @@
 // Import your Client Component
 import DashboardLayout from './thepages.js'
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 const axios = require('axios');
 
 async function getUserName() {
