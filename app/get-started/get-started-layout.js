@@ -5,7 +5,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function GetStartedLayout({client_id}, {redirect_uri}) {
+export default function GetStartedLayout({client_id, redirect_uri}) {
     return (
         <Box className={`${inter.className}`}>
             <Flex className={`${inter.className} p-4`} >
