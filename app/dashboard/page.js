@@ -25,9 +25,12 @@ async function getUserName() {
 }
 
 export default async function Page() {
-    if(!cookies().get('access_token')) {
+    if (!cookies().get('access_token')) {
         redirect("/get-started")
     }
-    const name = await getUserName()
-    return <DashboardLayout name={name}/>
+    else {
+        const name = await getUserName()
+        return <DashboardLayout name={name} />
+    }
+
 }
