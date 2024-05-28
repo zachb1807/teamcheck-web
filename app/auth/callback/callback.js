@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner } from '@chakra-ui/react'
+import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner, ColorModeProvider } from '@chakra-ui/react'
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 import { Inter } from "next/font/google";
 import { usePathname, redirect, useSearchParams, useRouter } from 'next/navigation'
@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 
-export default function CallbackPage() {
+export default function CallbackPage({redirect_uri}) {
     var code = null;
     const params = useSearchParams()
     const router = useRouter()
@@ -25,7 +25,7 @@ export default function CallbackPage() {
         var code = params.get("code");
 
         if (code != null && code != "") {
-            axios.post('/api/token', { code: code, redirect_uri: process.env.redirect_uri})
+            axios.post('/api/token', { code: code, redirect_uri: redirect_uri})
                 .then((response) => {
                     console.log(response.data.access_token);
                     cookies.set('access_token', response.data.access_token)
