@@ -3,7 +3,7 @@ import DashboardLayout from './thepages.js'
 import { cookies } from 'next/headers'
 const axios = require('axios');
 
-async function getUsersName() {
+async function getUserName() {
     const cookieStore = cookies()
     const access_token = cookieStore.get('access_token')
     let config = {
@@ -25,11 +25,9 @@ async function getUsersName() {
 }
 
 export default async function Page() {
-    const name = await getUsersName()
-    // const name = "yeah"
-
-    // Fetch data directly in a Server Component
-    //   const recentPosts = await getPosts()
-    // Forward fetched data to your Client Component
+    if(!cookies().get('access_token')) {
+        redirect("/get-started")
+    }
+    const name = await getUserName()
     return <DashboardLayout name={name}/>
 }
