@@ -8,7 +8,8 @@ import { Card, CardHeader, CardBody, CardFooter, Stack } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
-import { Input } from '@chakra-ui/react'
+import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
+import { Search2Icon } from '@chakra-ui/icons'
 
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
@@ -45,12 +46,16 @@ export default function EventsLayout({ token, params, teamName }) {
                     <Heading variant="disable_font_center" color="gray.700" >Tracked Events</Heading>
                     <Heading variant="disable_font_center" color="gray.700" size='md' my='4' mb='8'>{teamName}</Heading>
                     <Container centerContent maxW='lg'>
-                        <Input placeholder='Search' id='search' mb='8' maxW={'100%'} onInput={(object) => {
-                            var search = object.target.value;
-                            var filteredEvents = allEvents.filter(event => event.name.toLowerCase().includes(search.toLowerCase()));
-                            setEvents(filteredEvents);
-                        
-                        }} />
+                        <InputGroup>
+                            <InputLeftElement pointerEvents='none'>
+                                <Search2Icon color='gray.400' />
+                            </InputLeftElement>
+                            <Input placeholder='Search' id='search' mb='8' maxW={'100%'} onInput={(object) => {
+                                var search = object.target.value;
+                                var filteredEvents = allEvents.filter(event => event.name.toLowerCase().includes(search.toLowerCase()));
+                                setEvents(filteredEvents);
+                            }} />
+                        </InputGroup>
                         <Stack spacing='4' w={"100%"}>
                             {events.map((event, index) => {
                                 var date = new Date(event.updated_at);
