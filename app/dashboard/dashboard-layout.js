@@ -6,6 +6,7 @@ import * as React from "react";
 import { useState, useEffect, Suspense } from 'react';
 import { Card, CardHeader, CardBody, CardFooter, Stack } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { useRouter } from 'next/navigation'
 
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
@@ -42,7 +43,7 @@ export default function DashboardLayout({ name, token, user_id }) {
             <Flex className={`${inter.className} p-4`} >
                 <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
                 <Spacer />
-                <Button colorScheme="teal" onClick={() => { window.location.href = '/logout' }}>Logout</Button>
+                <Button colorScheme="teal" onClick={() => { window.location.href = '/logout' }} variant='outline'>Logout</Button>
             </Flex>
             <Divider />
             <Center>
@@ -62,7 +63,8 @@ export default function DashboardLayout({ name, token, user_id }) {
                         <Stack spacing='6' className='my-4'>
                             {teams.map((team, index) => {
                                 return (
-                                    <Card key={index} direction={{ base: 'row' }} variant='filled' overflow='hidden'>
+                                    <Link key={index} style={{ textDecoration: 'none' }} href={'/dashboard/' + team.id + '/events'}>
+                                    <Card direction={{ base: 'row' }} variant='filled' overflow='hidden' _hover={{ bg: "gray.200" }}>
                                         <Stack>
                                             <CardHeader>
                                                 <Heading size='md'> {team.name}</Heading>
@@ -79,6 +81,7 @@ export default function DashboardLayout({ name, token, user_id }) {
                                             </Center>
                                         </CardFooter>
                                     </Card>
+                                    </Link>
                                 )
                             })}
                         </Stack>
