@@ -18,11 +18,14 @@ const inter = Inter({ subsets: ["latin"] });
 export default function EventsLayout({ token, params, teamName }) {
 
     const [events, setEvents] = useState([]);
+    const [allEvents, setAllEvents] = useState([]);
 
     useEffect(() => {
         axios.get('/api/events?token=' + token + '&team_id=' + params.team_id)
             .then((response) => {
-                setEvents(response.data.reverse());
+                response.data.reverse();
+                setEvents(response.data);
+                setAllEvents(response.data);
             })
             .catch((error) => {
                 console.error(error);
@@ -42,7 +45,12 @@ export default function EventsLayout({ token, params, teamName }) {
                     <Heading variant="disable_font_center" color="gray.700" >Tracked Events</Heading>
                     <Heading variant="disable_font_center" color="gray.700" size='md' my='4' mb='8'>{teamName}</Heading>
                     <Container centerContent maxW='lg'>
-                        <Input placeholder='Search ' mb='8' maxW={'100%'} />
+                        <Input placeholder='Search' id='search' mb='8' maxW={'100%'} onInput={(object) => {
+                            var search = object.target.value;
+                            var filteredEvents = allEvents.filter(event => event.name.toLowerCase().includes(search.toLowerCase()));
+                            setEvents(filteredEvents);
+                        
+                        }} />
                         <Stack spacing='4' w={"100%"}>
                             {events.map((event, index) => {
                                 var date = new Date(event.updated_at);
