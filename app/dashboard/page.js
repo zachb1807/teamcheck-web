@@ -1,10 +1,10 @@
 // Import your Client Component
-import DashboardLayout from './thepages.js'
+import DashboardLayout from './dashboard-layout.js'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 const axios = require('axios');
 
-async function getUserName() {
+async function getUserData() {
     const cookieStore = cookies()
     const access_token = cookieStore.get('access_token')
     let config = {
@@ -16,7 +16,7 @@ async function getUserName() {
 
     try {
         const response = await axios.request(config)
-        return response.data.first_name
+        return response.data
     }
     catch (error) {
         console.log(error)
@@ -30,8 +30,11 @@ export default async function Page() {
         redirect("/get-started")
     }
     else {
-        const name = await getUserName()
-        return <DashboardLayout name={name} />
+        const data = await getUserData()
+        if(data.first_name == null) {
+            redirect("/get-started")
+        }
+        return <DashboardLayout name={data.first_name} token={cookies().get('access_token').value} user_id={data.id}/>
     }
 
 }
