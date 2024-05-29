@@ -69,7 +69,7 @@ export default function DashboardLayout({ name, token, user_id }) {
                         <Stack spacing='6' className='my-4'>
                             {teams.map((team, index) => {
                                 return (
-                                    <Card key={index} direction={{ base: 'row' }} overflow='hidden'>
+                                    <Card key={index} direction={{ base: 'row' }} variant='filled' overflow='hidden'>
                                         <Stack>
                                             <CardHeader>
                                                 <Heading size='md'> {team.name}</Heading>
