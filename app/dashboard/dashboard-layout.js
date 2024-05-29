@@ -11,26 +11,19 @@ const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
 
 
-async function getTeams(user_id, token) {
-    return axios.get('/api/teams?user_id=' + user_id + '&token=' + token)
-        .then((response) => {
-            return response.data;
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-}
-
 
 export default function DashboardLayout({ name, token, user_id }) {
     const [teams, setTeams] = useState([]);
 
     useEffect(() => {
-        getTeams(user_id, token)
-            .then((data) => {
-                setTeams(data);
-            });
-    })
+        axios.get('/api/teams?user_id=' + user_id + '&token=' + token)
+        .then((response) => {
+            setTeams(response.data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }, [])
 
     var greeting = null
 
