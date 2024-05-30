@@ -50,7 +50,7 @@ export default function EventsLayout({ token, params, teamName }) {
                             <InputLeftElement pointerEvents='none'>
                                 <Search2Icon color='gray.400' />
                             </InputLeftElement>
-                            <Input placeholder='Search' id='search' mb='8' focusBorderColor='teal.500' maxW={'100%'} onInput={(object) => {
+                            <Input placeholder='Search' id='search' mb='8' focusBorderColor='teal.500' borderColor='gray.400' _placeholder={{ opacity: 1, color: 'gray.500' }} maxW={'100%'} onInput={(object) => {
                                 var search = object.target.value;
                                 var filteredEvents = allEvents.filter(event => event.name.toLowerCase().includes(search.toLowerCase()));
                                 setEvents(filteredEvents);
