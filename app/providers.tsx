@@ -7,6 +7,13 @@ import "../styles/globals.css";
 const theme = extendTheme({
     components: {
         Heading: headingTheme,
+        Modal: {
+          baseStyle: {
+            dialogContainer: {
+              px: 4,
+          },
+        },
+      }
     }
   });
 

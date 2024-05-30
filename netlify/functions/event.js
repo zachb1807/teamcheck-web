@@ -60,6 +60,7 @@ exports.handler = async function (event, context, callback) {
                                         eventObject["first_name"] = membersArray[j].first_name;
                                         eventObject["last_name"] = membersArray[j].last_name;
                                         eventObject["is_non_player"] = membersArray[j].is_non_player;
+                                        eventObject["gender"] = membersArray[j].gender;
                                     }
                                 }
                             }
