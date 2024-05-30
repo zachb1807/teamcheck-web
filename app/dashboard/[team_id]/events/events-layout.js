@@ -34,7 +34,7 @@ export default function EventsLayout({ token, params, teamName }) {
     }, [])
 
     return (
-        <Box className={`${inter.className}`}>
+        <Box className={`${inter.className}`} mb='10'>
             <Flex className={`${inter.className} p-4`} >
                 <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
                 <Spacer />
@@ -56,7 +56,16 @@ export default function EventsLayout({ token, params, teamName }) {
                                 setEvents(filteredEvents);
                             }} />
                         </InputGroup>
-                        <Stack spacing='4' w={"100%"}>
+                        <Spinner
+                            thickness='4px'
+                            speed='0.65s'
+                            emptyColor='gray.200'
+                            color='teal.500'
+                            size='xl'
+                            className='my-5'
+                            display={allEvents.length > 0 == true ? 'none' : 'block'}
+                        />
+                        <Stack spacing='4' w={"100%"} >
                             {events.map((event, index) => {
                                 var date = new Date(event.updated_at);
                                 var updatedAtString = date.toDateString() + ' at ' + date.toLocaleTimeString();
