@@ -17,6 +17,14 @@ exports.handler = async function (event, context, callback) {
 
     await axios.request(config)
         .then((response) => {
+            if(response.data.collection.items == null || response.data.collection.items.length == 0) {
+                callback(null, {
+                    statusCode: 200,
+                    body: JSON.stringify([])
+                });
+                return;
+            }
+            
             var teamsArray = new Array();
             for (i = 0; i < response.data.collection.items.length; i++) {
                 var responseTeamObject = response.data.collection.items[i].data;

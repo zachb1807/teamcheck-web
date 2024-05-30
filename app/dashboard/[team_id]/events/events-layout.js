@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner } from '@chakra-ui/react'
+import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner, useBoolean } from '@chakra-ui/react'
 import { Inter } from "next/font/google";
 import * as React from "react";
 import { useState, useEffect, Suspense } from 'react';
@@ -20,6 +20,7 @@ export default function EventsLayout({ token, params, teamName }) {
 
     const [events, setEvents] = useState([]);
     const [allEvents, setAllEvents] = useState([]);
+    const [eventsLoaded, setEventsLoaded] = useBoolean();
 
     useEffect(() => {
         axios.get('/api/events?token=' + token + '&team_id=' + params.team_id)
@@ -27,9 +28,11 @@ export default function EventsLayout({ token, params, teamName }) {
                 response.data.reverse();
                 setEvents(response.data);
                 setAllEvents(response.data);
+                setEventsLoaded.on();
             })
             .catch((error) => {
                 console.error(error);
+
             });
     }, [])
 
@@ -46,7 +49,7 @@ export default function EventsLayout({ token, params, teamName }) {
                     <Heading variant="disable_font_center" color="gray.700" >Tracked Events</Heading>
                     <Heading variant="disable_font_center" color="gray.700" size='md' my='4' mb='8'>{teamName}</Heading>
                     <Container centerContent maxW='lg'>
-                        <InputGroup>
+                        <InputGroup display={eventsLoaded == false ? 'none' : 'block'}>
                             <InputLeftElement pointerEvents='none'>
                                 <Search2Icon color='gray.400' />
                             </InputLeftElement>
@@ -63,7 +66,7 @@ export default function EventsLayout({ token, params, teamName }) {
                             color='teal.500'
                             size='xl'
                             className='my-5'
-                            display={allEvents.length > 0 == true ? 'none' : 'block'}
+                            display={eventsLoaded == true ? 'none' : 'block'}
                         />
                         <Stack spacing='4' w={"100%"} >
                             {events.map((event, index) => {
