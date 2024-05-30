@@ -84,7 +84,7 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
                             <Tbody>
                                 {attendanceEntries.map((entry, index) => {
                                     return (
-                                        <Tr>
+                                        <Tr key={index}>
                                             <Td>{entry.first_name} {entry.last_name}</Td>
                                             <Td><ButtonGroup variant='outline' spacing='0' isAttached >
                                                 <Button colorScheme='green' variant={entry.status_code == 1 ? 'solid' : 'outline'}><CheckIcon /></Button>
