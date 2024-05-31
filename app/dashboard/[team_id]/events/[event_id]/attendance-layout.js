@@ -72,6 +72,9 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
 
     const [sortScheme, setSortScheme] = React.useState('1')
 
+    const [, updateState] = React.useState();
+    const forceUpdate = React.useCallback(() => updateState({}), []);
+
     function updateList(value) {
         if (value == '1') {
             setEntries(attendanceEntries.sort(sortFirstName));
@@ -80,7 +83,59 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
             setEntries(attendanceEntries.sort(sortLastName));
         }
     }
-    
+
+    function updateStatus(statusCode, trackedItemId) {
+        var temp = attendanceEntries
+        for(var i = 0; i < temp.length; i++) {
+            if(temp[i].id == trackedItemId) {
+                temp[i].loading_status_code = statusCode;
+            }
+        }
+        setEntries(temp);
+        var temp = allAttendanceEntries
+        for(var i = 0; i < temp.length; i++) {
+            if(temp[i].id == trackedItemId) {
+                temp[i].loading_status_code = statusCode;
+            }
+        }
+        setAllEntries(temp);
+        forceUpdate();
+
+        axios.put('/api/update-status', {
+            status_code: statusCode + 1,
+            tracked_item_id: trackedItemId,
+            token: token
+        })
+            .then((response) => {
+                console.log(response);
+
+                var temp = attendanceEntries
+                for(var i = 0; i < temp.length; i++) {
+                    if(temp[i].id == trackedItemId) {
+                        temp[i].status_code = statusCode;
+                        temp[i].loading_status_code = null;
+                    }
+                }
+                setEntries(temp);
+
+                var temp = allAttendanceEntries
+                for(var i = 0; i < temp.length; i++) {
+                    if(temp[i].id == trackedItemId) {
+                        temp[i].status_code = statusCode;
+                        temp[i].loading_status_code = null;
+                    }
+                }
+                setAllEntries(temp);
+
+                forceUpdate();
+                
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        console.log(trackedItemId + ' ' + statusCode)
+    }
+
 
     useEffect(() => {
         axios.get('/api/event?token=' + token + '&event_id=' + params.event_id + '&team_id=' + params.team_id)
@@ -143,9 +198,9 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
                                             <Tr key={index} maxW='100%'>
                                                 <Td maxW={'20%'}>{entry.first_name} {entry.last_name}</Td>
                                                 <Td isNumeric><ButtonGroup variant='outline' spacing='0' isAttached >
-                                                    <Button colorScheme='green' variant={entry.status_code == 1 ? 'solid' : 'outline'}><CheckIcon /></Button>
-                                                    <Button colorScheme='blackAlpha' variant={entry.status_code == 0 ? 'solid' : 'outline'}><MinusIcon /></Button>
-                                                    <Button colorScheme='red' variant={entry.status_code == 2 ? 'solid' : 'outline'}><CloseIcon /></Button>
+                                                    <Button isLoading={entry.loading_status_code == 1} colorScheme='green' variant={entry.status_code == 1 ? 'solid' : 'outline'} onClick={() => updateStatus(1, entry.id)}><CheckIcon /></Button>
+                                                    <Button isLoading={entry.loading_status_code == 0} colorScheme='blackAlpha' variant={entry.status_code == 0 ? 'solid' : 'outline'} onClick={() => updateStatus(0, entry.id)}><MinusIcon /></Button>
+                                                    <Button isLoading={entry.loading_status_code == 2} colorScheme='red' variant={entry.status_code == 2 ? 'solid' : 'outline'} onClick={() => updateStatus(2, entry.id)}><CloseIcon /></Button>
                                                 </ButtonGroup></Td>
                                             </Tr>
                                         )
@@ -205,15 +260,12 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
                         </AlertDialogHeader>
 
                         <AlertDialogBody>
-                            Are you sure? You can&apos;t undo this action afterwards.
+                            Filters will be coming soon. Stay tuned!
                         </AlertDialogBody>
 
                         <AlertDialogFooter>
                             <Button ref={cancelRef} onClick={onFilterClose}>
-                                Cancel
-                            </Button>
-                            <Button colorScheme='red' onClick={onFilterClose} ml={3}>
-                                Delete
+                                Close
                             </Button>
                         </AlertDialogFooter>
                     </AlertDialogContent>
