@@ -3,11 +3,8 @@
 import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Inter } from "next/font/google";
+import { useEffect } from "react";
 const inter = Inter({ subsets: ["latin"] });
-import { Metadata } from 'next';
-export const metadata = {
-    title: 'Invoices | Acme Dashboard',
-  };
 
 export default function GetStartedLayout({client_id, redirect_uri}) {
     useEffect(() => {

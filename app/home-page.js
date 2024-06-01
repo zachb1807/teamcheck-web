@@ -8,7 +8,6 @@ import { Flex, Spacer } from '@chakra-ui/react'
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/navigation'
-import { Metadata } from 'next';
 import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
