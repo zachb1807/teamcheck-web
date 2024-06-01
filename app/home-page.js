@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 // in the `pages` directory.
 export default function HomePage() {
   const router = useRouter()
-  document.title = "TeamCheck";
+  // document.title = "TeamCheck";
   return (
     <Box className={`${inter.className}`}>
       <Flex className={`${inter.className} p-4`} >
