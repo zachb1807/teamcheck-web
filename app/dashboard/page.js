@@ -31,10 +31,10 @@ export default async function Page() {
     }
     else {
         const data = await getUserData()
-        if(data == null || data.first_name == null) {
+        if (data == null || data.first_name == null) {
             redirect("/get-started")
         }
-        return <DashboardLayout name={data.first_name} token={cookies().get('access_token').value} user_id={data.id}/>
+        return <DashboardLayout name={data.first_name} token={cookies().get('access_token').value} user_id={data.id} />
     }
 
 }

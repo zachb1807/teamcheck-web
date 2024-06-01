@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import { Input, InputGroup, InputLeftElement, useDisclosure } from '@chakra-ui/react'
 import { Search2Icon, CheckIcon, MinusIcon, CloseIcon, HamburgerIcon, ArrowUpDownIcon } from '@chakra-ui/icons'
+import { clearToken } from '/app/actions';
 import { Radio, RadioGroup } from '@chakra-ui/react'
 import {
     Table,
@@ -156,7 +157,7 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
             <Flex className={`${inter.className} p-4`} >
                 <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
                 <Spacer />
-                <Button colorScheme="teal" onClick={() => { window.location.href = '/logout' }} variant='outline'>Logout</Button>
+                <Button colorScheme="teal" onClick={() => clearToken()} variant='outline'>Logout</Button>
             </Flex>
             <Divider />
             <Center>

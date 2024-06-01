@@ -7,6 +7,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { Card, CardHeader, CardBody, CardFooter, Stack } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/navigation'
+import { clearToken } from '/app/actions';
 
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
@@ -14,6 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export default function DashboardLayout({ name, token, user_id }) {
+    
     const [teams, setTeams] = useState([]);
 
     useEffect(() => {
@@ -43,7 +45,7 @@ export default function DashboardLayout({ name, token, user_id }) {
             <Flex className={`${inter.className} p-4`} >
                 <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
                 <Spacer />
-                <Button colorScheme="teal" onClick={() => { window.location.href = '/logout' }} variant='outline'>Logout</Button>
+                <Button colorScheme="teal" onClick={() => clearToken()} variant='outline'>Logout</Button>
             </Flex>
             <Divider />
             <Center>

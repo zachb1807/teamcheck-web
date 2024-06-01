@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
+import { clearToken } from '/app/actions';
 
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
@@ -41,7 +42,7 @@ export default function EventsLayout({ token, params, teamName }) {
             <Flex className={`${inter.className} p-4`} >
                 <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
                 <Spacer />
-                <Button colorScheme="teal" onClick={() => { window.location.href = '/logout' }} variant='outline'>Logout</Button>
+                <Button colorScheme="teal" onClick={() => clearToken()} variant='outline'>Logout</Button>
             </Flex>
             <Divider />
             <Center>
