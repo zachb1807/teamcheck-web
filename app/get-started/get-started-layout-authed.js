@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 import { useRouter } from 'next/navigation'
 
 export default function GetStartedAuthedLayout({ client_id, redirect_uri }) {
+    document.title = "Get Started | TeamCheck";
     const router = useRouter()
     return (
         <Box className={`${inter.className}`}>

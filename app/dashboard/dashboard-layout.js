@@ -17,8 +17,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function DashboardLayout({ name, token, user_id }) {
     
     const [teams, setTeams] = useState([]);
+    document.title = "Dashboard | TeamCheck";
 
     useEffect(() => {
+        
         axios.get('/api/teams?user_id=' + user_id + '&token=' + token)
         .then((response) => {
             setTeams(response.data);
