@@ -25,6 +25,7 @@ export default function EventsLayout({ token, params, teamName }) {
 
 
     useEffect(() => {
+        document.title = teamName + " | TeamCheck";
         axios.get('/api/events?token=' + token + '&team_id=' + params.team_id)
             .then((response) => {
                 response.data.reverse();

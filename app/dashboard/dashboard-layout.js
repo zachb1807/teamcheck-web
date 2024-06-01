@@ -19,6 +19,7 @@ export default function DashboardLayout({ name, token, user_id }) {
     const [teams, setTeams] = useState([]);
 
     useEffect(() => {
+        document.title = "Dashboard | TeamCheck";
         
         axios.get('/api/teams?user_id=' + user_id + '&token=' + token)
         .then((response) => {

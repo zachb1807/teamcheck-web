@@ -10,6 +10,9 @@ export const metadata = {
   };
 
 export default function GetStartedLayout({client_id, redirect_uri}) {
+    useEffect(() => {
+        document.title = "Get Started | TeamCheck";
+      }, []);
     return (
         <Box className={`${inter.className}`}>
             <Flex className={`${inter.className} p-4`} >

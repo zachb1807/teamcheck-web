@@ -140,6 +140,7 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
 
 
     useEffect(() => {
+        document.title = eventName + " | TeamCheck";
         axios.get('/api/event?token=' + token + '&event_id=' + params.event_id + '&team_id=' + params.team_id)
             .then((response) => {
                 response.data.sort(sortFirstName);

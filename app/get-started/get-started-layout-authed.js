@@ -5,9 +5,12 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import { useRouter } from 'next/navigation'
+import { use } from 'react';
 
 export default function GetStartedAuthedLayout({ client_id, redirect_uri }) {
-    document.title = "Get Started | TeamCheck";
+    useEffect(() => {
+        document.title = "Get Started | TeamCheck";
+    }, []);
     const router = useRouter()
     return (
         <Box className={`${inter.className}`}>
