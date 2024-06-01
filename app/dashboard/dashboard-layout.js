@@ -17,7 +17,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function DashboardLayout({ name, token, user_id }) {
     
     const [teams, setTeams] = useState([]);
-    document.title = "Dashboard | TeamCheck";
 
     useEffect(() => {
         

@@ -62,7 +62,6 @@ function sortLastName(a, b) {
 
 export default function AttendanceLayout({ token, params, teamName, eventName }) {
 
-    document.title = eventName + " | TeamCheck";
 
     const [attendanceEntries, setEntries] = useState([]);
     const [allAttendanceEntries, setAllEntries] = useState([]);

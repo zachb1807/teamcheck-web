@@ -4,9 +4,12 @@ import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, T
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
+import { Metadata } from 'next';
+export const metadata = {
+    title: 'Invoices | Acme Dashboard',
+  };
 
 export default function GetStartedLayout({client_id, redirect_uri}) {
-    document.title = "Get Started | TeamCheck";
     return (
         <Box className={`${inter.className}`}>
             <Flex className={`${inter.className} p-4`} >

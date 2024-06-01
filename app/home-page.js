@@ -8,14 +8,22 @@ import { Flex, Spacer } from '@chakra-ui/react'
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/navigation'
+import { Metadata } from 'next';
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 // This is a Client Component. It receives data as props and
 // has access to state and effects just like Page components
 // in the `pages` directory.
+
+
 export default function HomePage() {
+ 
+  useEffect(() => {
+    document.title = "TeamCheck | Home";
+  }, []);
+
   const router = useRouter()
-  // document.title = "TeamCheck";
   return (
     <Box className={`${inter.className}`}>
       <Flex className={`${inter.className} p-4`} >

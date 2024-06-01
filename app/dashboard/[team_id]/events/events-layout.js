@@ -23,7 +23,6 @@ export default function EventsLayout({ token, params, teamName }) {
     const [allEvents, setAllEvents] = useState([]);
     const [eventsLoaded, setEventsLoaded] = useBoolean();
 
-    document.title = teamName + " | TeamCheck";
 
     useEffect(() => {
         axios.get('/api/events?token=' + token + '&team_id=' + params.team_id)
