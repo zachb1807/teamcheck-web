@@ -1,23 +1,30 @@
 import { Suspense } from 'react'
 import CheckPage from './check.js'
 import { cookies } from 'next/headers'
+const axios = require('axios');
+import { redirect } from 'next/navigation'
 
 
 export default async function Page() {
-    var accessToken = cookies().get('access_token').value
-    let config = {
-        method: 'get',
-        maxBodyLength: Infinity,
-        url: process.env.URL + '/api/user?token=' + accessToken,
-        headers: {}
-    };
-
     try {
-        const response = await axios.request(config)
-        return <CheckPage msg={"sucess"}/>
+        var accessToken = cookies().get('access_token').value
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: process.env.URL + '/api/user?token=' + accessToken,
+            headers: {}
+        };
+
+        try {
+            const response = await axios.request(config)
+            return <CheckPage success={true} />
+        }
+        catch (error) {
+            console.log(error)
+            return <CheckPage success={false} client_id={process.env.client_id} redirect_uri={process.env.redirect_uri}/>
+        }
     }
     catch (error) {
-        console.log(error)
-        return <CheckPage message={"didnt work"}/>
+        return <CheckPage success={false} client_id={process.env.client_id} redirect_uri={process.env.redirect_uri} />
     }
 }
