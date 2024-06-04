@@ -36,9 +36,9 @@ export default function HomePage() {
         <Box display="flex">
           <Heading className={`${inter.className}`} variant="disable_font_center" size='2xl' color="gray.700">The <Text as="span" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>improved</Text> attendance management dashboard for TeamSnap</Heading>
         </Box>
-        <Box height={`51`}></Box>
-        <Image src="/phone.png" alt="TeamCheck" />
-        <Box height={`51`}></Box>
+        <Box height={`41`}></Box>
+        <Image src="/phone.png" alt="TeamCheck" h='655px'/>
+        <Box height={`10`}></Box>
         <Text className={`${inter.className}`} align="center" fontSize='xl'>TeamCheck is a web application that provides a more efficient way for TeamSnap coaches to manage their players&apos; attendance.</Text>
         <Box height={`51`}></Box>
           <Button colorScheme="teal" onClick={() => router.push('/get-started')}>Get Started<ChevronRightIcon className={`ml-2`} /></Button>
