@@ -37,8 +37,8 @@ export default function HomePage() {
           <Heading className={`${inter.className}`} variant="disable_font_center" size='2xl' color="gray.700">The <Text as="span" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>improved</Text> attendance management dashboard for TeamSnap</Heading>
         </Box>
         <Box height={`41`}></Box>
-        <Image src="/phone.png" alt="TeamCheck" h='655px'/>
-        <Box height={`10`}></Box>
+        <Image src="/phone.webp" alt="TeamCheck" height={'655px'}/>
+        <Box height={`5`}></Box>
         <Text className={`${inter.className}`} align="center" fontSize='xl'>TeamCheck is a web application that provides a more efficient way for TeamSnap coaches to manage their players&apos; attendance.</Text>
         <Box height={`51`}></Box>
           <Button colorScheme="teal" onClick={() => router.push('/get-started')}>Get Started<ChevronRightIcon className={`ml-2`} /></Button>
@@ -112,7 +112,7 @@ export default function HomePage() {
               <CardBody>
                 <Stack spacing={4}>
                   <Image
-                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    src='/search.png'
                     alt='Green double couch with wooden legs'
                     borderRadius='lg'
                   />
@@ -126,7 +126,7 @@ export default function HomePage() {
               <CardBody>
                 <Stack spacing={4}>
                   <Image
-                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    src='/dashboard.png'
                     alt='Green double couch with wooden legs'
                     borderRadius='lg'
                   />
