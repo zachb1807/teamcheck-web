@@ -68,7 +68,7 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
 
     const [sortScheme, setSortScheme] = React.useState('1')
 
-    function updateList(value) {
+    function sortList(value) {
         setEntries(attendanceEntries.sort(value == '1' ? sortFirstName : sortLastName));
         setAllEntries(allAttendanceEntries.sort(value == '1' ? sortFirstName : sortLastName));
     }
@@ -193,7 +193,7 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
                         <AlertDialogBody>
                             <RadioGroup onChange={(value) => {
                                 setSortScheme(value)
-                                updateList(value)
+                                sortList(value)
                             }} value={sortScheme}>
                                 <Stack spacing={5}>
                                     <Radio colorScheme='teal' value='1' size='lg'>
