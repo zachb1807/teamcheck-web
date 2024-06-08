@@ -68,6 +68,11 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
 
     const [sortScheme, setSortScheme] = React.useState('1')
 
+    function updateList(value) {
+        setEntries(attendanceEntries.sort(value == '1' ? sortFirstName : sortLastName));
+        setAllEntries(allAttendanceEntries.sort(value == '1' ? sortFirstName : sortLastName));
+    }
+
     const updateEntries = (entries, trackedItemId, updates) => {
         return entries.map(entry =>
             entry.id === trackedItemId ? { ...entry, ...updates } : entry
