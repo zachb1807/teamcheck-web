@@ -3,7 +3,7 @@
 import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner, useBoolean, ButtonGroup } from '@chakra-ui/react'
 import { Inter } from "next/font/google";
 import * as React from "react";
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardHeader, CardBody, CardFooter, Stack } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/navigation'
@@ -33,11 +33,8 @@ import {
     AlertDialogCloseButton,
 } from '@chakra-ui/react'
 
-
-
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
-
 
 function sortFirstName(a, b) {
     if (a.first_name < b.first_name) {
@@ -48,6 +45,7 @@ function sortFirstName(a, b) {
     }
     return 0;
 }
+
 function sortLastName(a, b) {
     if (a.last_name < b.last_name) {
         return -1;
@@ -58,11 +56,7 @@ function sortLastName(a, b) {
     return 0;
 }
 
-
-
 export default function AttendanceLayout({ token, params, teamName, eventName }) {
-
-
     const [attendanceEntries, setEntries] = useState([]);
     const [allAttendanceEntries, setAllEntries] = useState([]);
     const [entriesLoaded, setEntriesLoaded] = useBoolean();
@@ -74,70 +68,41 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
 
     const [sortScheme, setSortScheme] = React.useState('1')
 
-    const [, updateState] = React.useState();
-    const forceUpdate = React.useCallback(() => updateState({}), []);
-
-    function updateList(value) {
-        if (value == '1') {
-            setEntries(attendanceEntries.sort(sortFirstName));
-        }
-        else {
-            setEntries(attendanceEntries.sort(sortLastName));
-        }
+    function sortList(value) {
+        setEntries(attendanceEntries.sort(value == '1' ? sortFirstName : sortLastName));
+        setAllEntries(allAttendanceEntries.sort(value == '1' ? sortFirstName : sortLastName));
     }
 
-    function updateStatus(statusCode, trackedItemId) {
-        var temp = attendanceEntries
-        for(var i = 0; i < temp.length; i++) {
-            if(temp[i].id == trackedItemId) {
-                temp[i].loading_status_code = statusCode;
-            }
-        }
-        setEntries(temp);
-        var temp = allAttendanceEntries
-        for(var i = 0; i < temp.length; i++) {
-            if(temp[i].id == trackedItemId) {
-                temp[i].loading_status_code = statusCode;
-            }
-        }
-        setAllEntries(temp);
-        forceUpdate();
+    const updateEntries = (entries, trackedItemId, updates) => {
+        return entries.map(entry =>
+            entry.id === trackedItemId ? { ...entry, ...updates } : entry
+        );
+    };
+
+    const updateStatus = (statusCode, trackedItemId) => {
+        const updates = { loading_status_code: statusCode };
+
+        setEntries(prevEntries => updateEntries(prevEntries, trackedItemId, updates));
+        setAllEntries(prevEntries => updateEntries(prevEntries, trackedItemId, updates));
 
         axios.put('/api/update-status', {
             status_code: statusCode + 1,
             tracked_item_id: trackedItemId,
             token: token
         })
-            .then((response) => {
-                console.log(response);
+        .then((response) => {
+            console.log(response);
+            const finalizeUpdates = { status_code: statusCode, loading_status_code: null };
 
-                var temp = attendanceEntries
-                for(var i = 0; i < temp.length; i++) {
-                    if(temp[i].id == trackedItemId) {
-                        temp[i].status_code = statusCode;
-                        temp[i].loading_status_code = null;
-                    }
-                }
-                setEntries(temp);
+            setEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
+            setAllEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 
-                var temp = allAttendanceEntries
-                for(var i = 0; i < temp.length; i++) {
-                    if(temp[i].id == trackedItemId) {
-                        temp[i].status_code = statusCode;
-                        temp[i].loading_status_code = null;
-                    }
-                }
-                setAllEntries(temp);
-
-                forceUpdate();
-                
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        console.log(trackedItemId + ' ' + statusCode)
-    }
-
+        console.log(`${trackedItemId} ${statusCode}`);
+    };
 
     useEffect(() => {
         document.title = eventName + " | TeamCheck";
@@ -150,9 +115,8 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
             })
             .catch((error) => {
                 console.error(error);
-
             });
-    }, [])
+    }, []);
 
     return (
         <Box className={`${inter.className}`} mb='10'>
@@ -229,7 +193,7 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
                         <AlertDialogBody>
                             <RadioGroup onChange={(value) => {
                                 setSortScheme(value)
-                                updateList(value)
+                                sortList(value)
                             }} value={sortScheme}>
                                 <Stack spacing={5}>
                                     <Radio colorScheme='teal' value='1' size='lg'>
