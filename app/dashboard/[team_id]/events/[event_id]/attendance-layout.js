@@ -32,6 +32,7 @@ import {
     AlertDialogOverlay,
     AlertDialogCloseButton,
 } from '@chakra-ui/react'
+import TopBar from '/app/dashboard/top-bar';
 
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
@@ -120,12 +121,7 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
 
     return (
         <Box className={`${inter.className}`} mb='10'>
-            <Flex className={`${inter.className} p-4`} >
-                <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
-                <Spacer />
-                <Button colorScheme="teal" onClick={() => clearToken()} variant='outline'>Logout</Button>
-            </Flex>
-            <Divider />
+            <TopBar logoutAction={() => clearToken()}/>
             <Center>
                 <Container centerContent maxW='container.md' className="mt-16">
                     <Heading variant="disable_font_center" color="gray.700" >{eventName}</Heading>

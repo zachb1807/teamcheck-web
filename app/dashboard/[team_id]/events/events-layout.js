@@ -11,6 +11,8 @@ import { usePathname } from 'next/navigation'
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
 import { clearToken } from '/app/actions';
+import  EventCard  from './event-card';
+import TopBar from '../../top-bar';
 
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
@@ -41,12 +43,7 @@ export default function EventsLayout({ token, params, teamName }) {
 
     return (
         <Box className={`${inter.className}`} mb='10'>
-            <Flex className={`${inter.className} p-4`} >
-                <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
-                <Spacer />
-                <Button colorScheme="teal" onClick={() => clearToken()} variant='outline'>Logout</Button>
-            </Flex>
-            <Divider />
+           <TopBar logoutAction={() => clearToken()}/>
             <Center>
                 <Container centerContent maxW='container.md' className="mt-16">
                     <Heading variant="disable_font_center" color="gray.700" >Tracked Events</Heading>
@@ -77,24 +74,8 @@ export default function EventsLayout({ token, params, teamName }) {
                                 var updatedAtString = date.toDateString() + ' at ' + date.toLocaleTimeString();
 
                                 return (
-                                    <Link key={index} style={{ textDecoration: 'none' }} href={'/dashboard/' + params.team_id + '/events/' + event.id} w={"100%"}>
-                                        <Card direction={{ base: 'row' }} variant='filled' overflow='hidden' _hover={{ bg: "gray.200" }} w={"100%"}>
-                                            <Stack>
-                                                <CardHeader>
-                                                    <Heading size='md'> {event.name}</Heading>
-                                                </CardHeader>
-                                                <CardBody>
-                                                    <Text>Updated {updatedAtString}</Text>
-                                                </CardBody>
-                                            </Stack>
-                                            <Spacer />
-                                            <CardFooter>
-                                                <Center w='5'>
-                                                    <ArrowForwardIcon boxSize={7} color="teal.600" />
-                                                </Center>
-                                            </CardFooter>
-                                        </Card>
-                                    </Link>
+                                    <EventCard key={index} event={event} updatedAtString={updatedAtString} team_id={params.team_id} />
+
                                 )
                             })}
                         </Stack>

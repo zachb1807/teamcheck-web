@@ -8,6 +8,8 @@ import { Card, CardHeader, CardBody, CardFooter, Stack } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/navigation'
 import { clearToken } from '/app/actions';
+import  TeamCard  from './team-card';
+import TopBar from './top-bar';
 
 const axios = require('axios');
 const inter = Inter({ subsets: ["latin"] });
@@ -44,12 +46,7 @@ export default function DashboardLayout({ name, token, user_id }) {
 
     return (
         <Box className={`${inter.className}`}>
-            <Flex className={`${inter.className} p-4`} >
-                <Heading className={`${inter.className} ml-1`} variant="disable_font_center" bgGradient='linear(to-l, teal.400, teal.600)' bgClip='text'>TeamCheck</Heading>
-                <Spacer />
-                <Button colorScheme="teal" onClick={() => clearToken()} variant='outline'>Logout</Button>
-            </Flex>
-            <Divider />
+            <TopBar logoutAction={() => clearToken()}/>
             <Center>
                 <AbsoluteCenter axis='vertical' className='mx-2'>
                     <Container centerContent maxW='container.md' className="mt-16">
@@ -67,25 +64,7 @@ export default function DashboardLayout({ name, token, user_id }) {
                         <Stack spacing='6' className='my-4'>
                             {teams.map((team, index) => {
                                 return (
-                                    <Link key={index} style={{ textDecoration: 'none' }} href={'/dashboard/' + team.id + '/events'}>
-                                    <Card direction={{ base: 'row' }} variant='filled' overflow='hidden' _hover={{ bg: "gray.200" }}>
-                                        <Stack>
-                                            <CardHeader>
-                                                <Heading size='md'> {team.name}</Heading>
-                                            </CardHeader>
-                                            <CardBody>
-                                                <Text>{team.season_name}</Text>
-                                                <Text>{team.player_member_count} players</Text>
-                                            </CardBody>
-                                        </Stack>
-                                        <Spacer />
-                                        <CardFooter>
-                                            <Center w='5'>
-                                                <ArrowForwardIcon boxSize={7} color="teal.600"/>
-                                            </Center>
-                                        </CardFooter>
-                                    </Card>
-                                    </Link>
+                                    <TeamCard team={team} key={index}/>
                                 )
                             })}
                         </Stack>
