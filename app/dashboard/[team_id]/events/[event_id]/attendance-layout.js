@@ -1,36 +1,26 @@
 'use client'
-
-import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner, useBoolean, ButtonGroup } from '@chakra-ui/react'
 import { Inter } from "next/font/google";
 import * as React from "react";
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Stack } from '@chakra-ui/react'
-import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { useRouter } from 'next/navigation'
-import { usePathname } from 'next/navigation'
+import { Stack } from '@chakra-ui/react'
 import { Input, InputGroup, InputLeftElement, useDisclosure } from '@chakra-ui/react'
 import { Search2Icon, CheckIcon, MinusIcon, CloseIcon, HamburgerIcon, ArrowUpDownIcon } from '@chakra-ui/icons'
 import { clearToken } from '/app/actions';
 import { Radio, RadioGroup } from '@chakra-ui/react'
 import {
     Table,
-    Thead,
     Tbody,
-    Tfoot,
     Tr,
-    Th,
     Td,
-    TableCaption,
     TableContainer,
-} from '@chakra-ui/react'
-import {
     AlertDialog,
     AlertDialogBody,
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogContent,
     AlertDialogOverlay,
-    AlertDialogCloseButton,
+    Box, 
+    Heading, Button, Container, Spinner, useBoolean, ButtonGroup
 } from '@chakra-ui/react'
 import TopBar from '/app/dashboard/top-bar';
 
@@ -91,16 +81,16 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
             tracked_item_id: trackedItemId,
             token: token
         })
-        .then((response) => {
-            console.log(response);
-            const finalizeUpdates = { status_code: statusCode, loading_status_code: null };
+            .then((response) => {
+                console.log(response);
+                const finalizeUpdates = { status_code: statusCode, loading_status_code: null };
 
-            setEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
-            setAllEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+                setEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
+                setAllEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 
         console.log(`${trackedItemId} ${statusCode}`);
     };
@@ -121,7 +111,7 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
 
     return (
         <Box className={`${inter.className}`} mb='10'>
-            <TopBar logoutAction={() => clearToken()}/>
+            <TopBar logoutAction={() => clearToken()} />
             <Center>
                 <Container centerContent maxW='container.md' className="mt-16">
                     <Heading variant="disable_font_center" color="gray.700" >{eventName}</Heading>
