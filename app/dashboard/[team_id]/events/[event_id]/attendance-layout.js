@@ -72,6 +72,10 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
         );
     };
 
+    function getNameFromItemId(itemId) {
+        return attendanceEntries.find(entry => entry.id == itemId).first_name;
+    }
+
     const updateStatus = (statusCode, trackedItemId) => {
         const updates = { loading_status_code: statusCode };
 
@@ -95,9 +99,10 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
                 const finalizeUpdates = { loading_status_code: null };
                 setEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
                 setAllEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
+
                 toast({
                     title: 'Unable to update attendance',
-                    description: "We were unable to update the attendance status. Please try again or check your internet connection.",
+                    description: "We were unable to update the attendance status for " + getNameFromItemId(trackedItemId) + ". Please try again or check your internet connection.",
                     status: 'error',
                     duration: 5000,
                     isClosable: true,
