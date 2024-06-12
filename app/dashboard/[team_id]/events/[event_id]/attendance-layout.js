@@ -7,6 +7,7 @@ import { Input, InputGroup, InputLeftElement, useDisclosure, Center } from '@cha
 import { Search2Icon, CheckIcon, MinusIcon, CloseIcon, HamburgerIcon, ArrowUpDownIcon } from '@chakra-ui/icons'
 import { clearToken } from '/app/actions';
 import { Radio, RadioGroup } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react'
 import {
     Table,
     Tbody,
@@ -48,6 +49,7 @@ function sortLastName(a, b) {
 }
 
 export default function AttendanceLayout({ token, params, teamName, eventName }) {
+    const toast = useToast()
     const [attendanceEntries, setEntries] = useState([]);
     const [allAttendanceEntries, setAllEntries] = useState([]);
     const [entriesLoaded, setEntriesLoaded] = useBoolean();
@@ -90,6 +92,17 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
             })
             .catch((error) => {
                 console.error(error);
+                const finalizeUpdates = { loading_status_code: null };
+                setEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
+                setAllEntries(prevEntries => updateEntries(prevEntries, trackedItemId, finalizeUpdates));
+                toast({
+                    title: 'Unable to update attendance',
+                    description: "We were unable to update the attendance status. Please try again or check your internet connection.",
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true,
+                  })
+
             });
 
         console.log(`${trackedItemId} ${statusCode}`);
