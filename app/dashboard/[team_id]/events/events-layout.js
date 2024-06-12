@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner, useBoolean } from '@chakra-ui/react'
+import { Box, Flex, Heading, Spacer, Link, Button, Divider, Center, Container, Text, Image, AbsoluteCenter, Spinner, useBoolean, InputRightElement } from '@chakra-ui/react'
 import { Inter } from "next/font/google";
 import * as React from "react";
 import { useState, useEffect, Suspense } from 'react';
@@ -9,7 +9,7 @@ import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
-import { Search2Icon } from '@chakra-ui/icons'
+import { Search2Icon, CloseIcon } from '@chakra-ui/icons'
 import { clearToken } from '/app/actions';
 import  EventCard  from './event-card';
 import TopBar from '../../top-bar';
@@ -24,6 +24,10 @@ export default function EventsLayout({ token, params, teamName }) {
     const [events, setEvents] = useState([]);
     const [allEvents, setAllEvents] = useState([]);
     const [eventsLoaded, setEventsLoaded] = useBoolean();
+    const [search, setSearch] = useState('');
+
+    const [, updateState] = React.useState();
+const forceUpdate = React.useCallback(() => updateState({}), []);
 
 
     useEffect(() => {
@@ -53,11 +57,14 @@ export default function EventsLayout({ token, params, teamName }) {
                             <InputLeftElement pointerEvents='none'>
                                 <Search2Icon color='gray.400' />
                             </InputLeftElement>
-                            <Input placeholder='Search' id='search' mb='8' focusBorderColor='teal.500' borderColor='gray.400' _placeholder={{ opacity: 1, color: 'gray.500' }} maxW={'100%'} onInput={(object) => {
-                                var search = object.target.value;
+                            <Input placeholder='Search' value={search} id='search' mb='8' focusBorderColor='teal.500' bg={'white'} borderColor='gray.400' _placeholder={{ opacity: 1, color: 'gray.500' }} maxW={'100%'} onInput={(object) => {
+                                setSearch(object.target.value);
                                 var filteredEvents = allEvents.filter(event => event.name.toLowerCase().includes(search.toLowerCase()));
                                 setEvents(filteredEvents);
                             }} />
+                            <InputRightElement onClick={() => {setSearch(''); forceUpdate()}} display={search.length > 0 ? null : 'none'}>
+                                <CloseIcon color='gray.400' />
+                            </InputRightElement>
                         </InputGroup>
                         <Spinner
                             thickness='4px'

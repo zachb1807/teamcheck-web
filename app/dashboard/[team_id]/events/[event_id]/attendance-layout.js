@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import * as React from "react";
 import { useState, useEffect } from 'react';
 import { Stack } from '@chakra-ui/react'
-import { Input, InputGroup, InputLeftElement, useDisclosure } from '@chakra-ui/react'
+import { Input, InputGroup, InputLeftElement, useDisclosure, Center } from '@chakra-ui/react'
 import { Search2Icon, CheckIcon, MinusIcon, CloseIcon, HamburgerIcon, ArrowUpDownIcon } from '@chakra-ui/icons'
 import { clearToken } from '/app/actions';
 import { Radio, RadioGroup } from '@chakra-ui/react'
@@ -118,14 +118,14 @@ export default function AttendanceLayout({ token, params, teamName, eventName })
                     <Heading variant="disable_font_center" color="gray.700" size='md' my='4' mb='8'>{teamName}</Heading>
                     <Container maxW={'sm'} display={entriesLoaded == false ? 'none' : 'block'}>
                         <ButtonGroup w='100%'>
-                            <Button w='100%' leftIcon={<HamburgerIcon />} onClick={onFilterOpen}>Filter</Button>
-                            <Button w='100%' leftIcon={<ArrowUpDownIcon />} onClick={onSortOpen}>Sort</Button>
+                            <Button variant='outline' w='100%' leftIcon={<HamburgerIcon />} onClick={onFilterOpen} className="backdrop-blur bg-zinc-500/5">Filter</Button>
+                            <Button variant='outline' w='100%' leftIcon={<ArrowUpDownIcon />} onClick={onSortOpen} className="backdrop-blur bg-zinc-500/5">Sort</Button>
                         </ButtonGroup>
                         <InputGroup my='6'>
                             <InputLeftElement pointerEvents='none'>
                                 <Search2Icon color='gray.400' />
                             </InputLeftElement>
-                            <Input placeholder='Search' id='search' focusBorderColor='teal.500' borderColor='gray.400' _placeholder={{ opacity: 1, color: 'gray.500' }} maxW={'100%'} onInput={(object) => {
+                            <Input placeholder='Search' id='search' focusBorderColor='teal.500' borderColor='gray.400' bg={'white'} _placeholder={{ opacity: 1, color: 'gray.500' }} maxW={'100%'} onInput={(object) => {
                                 var search = object.target.value;
                                 var filteredEvents = allAttendanceEntries.filter(entry => entry.first_name.toLowerCase().includes(search.toLowerCase()) || entry.last_name.toLowerCase().includes(search.toLowerCase()));
                                 setEntries(filteredEvents);

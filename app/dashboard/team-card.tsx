@@ -4,7 +4,7 @@ import { ArrowForwardIcon } from '@chakra-ui/icons'
 export default function TeamCard({ key, team }) {
     return (
         <Link key={key} style={{ textDecoration: 'none' }} href={'/dashboard/' + team.id + '/events'}>
-        <Card direction={{ base: 'row' }} variant='filled' overflow='hidden' _hover={{ bg: "gray.200" }} className="hover:shadow-sm">
+        <Card direction={{ base: 'row' }} variant='outline' overflow='hidden' _hover={{ bg: "gray.100" }} className="hover:shadow-sm">
             <Stack>
                 <CardHeader>
                     <Heading size='md'> {team.name}</Heading>
