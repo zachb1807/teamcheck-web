@@ -42,7 +42,7 @@ Visit **Site Configuration -> Environmental Variables**. Create the following ne
 
 
 
-## Local development
+## Local dev server
 Run the local development server in your project directory:
 
 ```bash
